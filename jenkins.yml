@@ -1,0 +1,35 @@
+jenkins:
+  systemMessage: "Welcome to Jenkins!"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: Dravid
+          password: pass123
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:*"
+        - "Job/Build:*"
+jobs:
+  - script: >
+      pipeline {
+        agent any
+        stages {
+          stage('Build') {
+            steps {
+              sh 'echo "Building..."'
+            }
+          }
+          stage('Test') {
+            steps {
+              sh 'echo "Testing..."'
+            }
+          }
+          stage('Deploy') {
+            steps {
+              sh 'echo "Deploying..."'
+            }
+          }
+        }
+      }
