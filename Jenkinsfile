@@ -2,7 +2,9 @@ pipeline {
   
    agent any
 
-   tools {nodejs "nodejs"}
+   parameters {
+        string(name: 'pipelineId', defaultValue: 'my-new-unique-id', description: 'The unique ID for the pipeline')
+    }
 
    stages {
    
